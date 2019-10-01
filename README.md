@@ -27,7 +27,7 @@ Database access will be done using the `db.js` file included inside the `data` f
 The `db.js` publishes the following methods:
 
 - [x] `find()`: calling find returns a promise that resolves to an array of all the `posts` contained in the database.
-- `findById()`: this method expects an `id` as it's only parameter and returns the post corresponding to the `id` provided or an empty array if no post with that `id` is found.
+- [x] `findById()`: this method expects an `id` as it's only parameter and returns the post corresponding to the `id` provided or an empty array if no post with that `id` is found.
 - `insert()`: calling insert passing it a `post` object will add it to the database and return an object with the `id` of the inserted post. The object looks like this: `{ id: 123 }`.
 - `update()`: accepts two arguments, the first is the `id` of the post to update and the second is an object with the `changes` to apply. It returns the count of updated records. If the count is 1 it means the record was updated correctly.
 - `remove()`: the remove method accepts an `id` as its first parameter and upon successfully deleting the post from the database it returns the number of records deleted.
@@ -77,7 +77,7 @@ Configure the API to handle to the following routes:
 | POST   | /api/posts              | Creates a post using the information sent inside the `request body`.                                                                                                        |
 | POST   | /api/posts/:id/comments | Creates a comment for the post with the specified id using information sent inside of the `request body`.                                                                   |
 |[x] GET    | /api/posts              | Returns an array of all the post objects contained in the database.                                                                                                         |
-| GET    | /api/posts/:id          | Returns the post object with the specified id.                                                                                                                              |
+| [x] GET    | /api/posts/:id          | Returns the post object with the specified id.                                                                                                                              |
 | GET    | /api/posts/:id/comments | Returns an array of all the comment objects associated with the post with the specified id.                                                                                 |
 | DELETE | /api/posts/:id          | Removes the post with the specified id and returns the **deleted post object**. You may need to make additional calls to the database in order to satisfy this requirement. |
 | PUT    | /api/posts/:id          | Updates the post with the specified `id` using data from the `request body`. Returns the modified document, **NOT the original**.                                           |
@@ -127,7 +127,7 @@ When the client makes a `POST` request to `/api/posts/:id/comments`:
   - respond with HTTP status code `500` (Server Error).
   - return the following JSON object: `{ error: "There was an error while saving the comment to the database" }`.
 
-When the client makes a `GET` request to `/api/posts`:
+[x] When the client makes a `GET` request to `/api/posts`:
 
 - [x] If there's an error in retrieving the _posts_ from the database:
   - cancel the request.
@@ -136,7 +136,7 @@ When the client makes a `GET` request to `/api/posts`:
 
 When the client makes a `GET` request to `/api/posts/:id`:
 
-- If the _post_ with the specified `id` is not found:
+- [x] If the _post_ with the specified `id` is not found:
 
   - return HTTP status code `404` (Not Found).
   - return the following JSON object: `{ message: "The post with the specified ID does not exist." }`.
