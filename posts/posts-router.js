@@ -88,10 +88,10 @@ router.get("/:id/comments", (req, res) => {
     const id = req.params.id;
     PostData.findPostComments(id)
         .then(results => {
-            if (results) {
-                res.json(results);
+            if (results.length === 0) {
+                res.status(404).json({message: "The post with the specified ID does not exist"});
             } else {
-                res.status(404).json({message: "The post with the specified ID does not exist"})                
+                res.json(results);                
             }
         })
         .catch(err => {res.status(500).json({error: "The comments could not be retrieved."})})
