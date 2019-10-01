@@ -113,11 +113,16 @@ router.post("/:id/comments", (req, res) => {
 
 router.get("/:id/comments/:id", (req, res) => {
     const id = req.params.id;
-    if ( id ) {
         PostData.findCommentById(id)
-            .then(comment => res.json(comment))
+            .then(comment => {
+                if(comment) {res.json(comment);
+                } else {
+                    res.json({error: "The post with this id does not exist."})
+                }
+            
+            })
             .catch(err => console.log(err))
-    }
+
 })
 
 
