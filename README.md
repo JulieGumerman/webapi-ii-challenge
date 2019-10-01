@@ -28,9 +28,9 @@ The `db.js` publishes the following methods:
 
 - [x] `find()`: calling find returns a promise that resolves to an array of all the `posts` contained in the database.
 - [x] `findById()`: this method expects an `id` as it's only parameter and returns the post corresponding to the `id` provided or an empty array if no post with that `id` is found.
-- `insert()`: calling insert passing it a `post` object will add it to the database and return an object with the `id` of the inserted post. The object looks like this: `{ id: 123 }`.
-- `update()`: accepts two arguments, the first is the `id` of the post to update and the second is an object with the `changes` to apply. It returns the count of updated records. If the count is 1 it means the record was updated correctly.
-- `remove()`: the remove method accepts an `id` as its first parameter and upon successfully deleting the post from the database it returns the number of records deleted.
+- [x] `insert()`: calling insert passing it a `post` object will add it to the database and return an object with the `id` of the inserted post. The object looks like this: `{ id: 123 }`.
+- [x] `update()`: accepts two arguments, the first is the `id` of the post to update and the second is an object with the `changes` to apply. It returns the count of updated records. If the count is 1 it means the record was updated correctly.
+- [x] `remove()`: the remove method accepts an `id` as its first parameter and upon successfully deleting the post from the database it returns the number of records deleted.
 - `findPostComments()`: the findPostComments accepts a `postId` as its first parameter and returns all comments on the post associated with the post id.
 - `findCommentById()`: accepts an `id` and returns the comment associated with that id.
 - `insertComment()`: calling insertComment while passing it a `comment` object will add it to the database and return an object with the `id` of the inserted comment. The object looks like this: `{ id: 123 }`. This method will throw an error if the `post_id` field in the `comment` object does not match a valid post id in the database.
@@ -86,19 +86,19 @@ Configure the API to handle to the following routes:
 
 When the client makes a `POST` request to `/api/posts`:
 
-- If the request body is missing the `title` or `contents` property:
+- [x] If the request body is missing the `title` or `contents` property:
 
   - cancel the request.
   - respond with HTTP status code `400` (Bad Request).
   - return the following JSON response: `{ errorMessage: "Please provide title and contents for the post." }`.
 
-- If the information about the _post_ is valid:
+- [x] If the information about the _post_ is valid:
 
   - save the new _post_ the the database.
   - return HTTP status code `201` (Created).
   - return the newly created _post_.
 
-- If there's an error while saving the _post_:
+- [x] If there's an error while saving the _post_:
   - cancel the request.
   - respond with HTTP status code `500` (Server Error).
   - return the following JSON object: `{ error: "There was an error while saving the post to the database" }`.
@@ -170,26 +170,26 @@ When the client makes a `DELETE` request to `/api/posts/:id`:
   - respond with HTTP status code `500`.
   - return the following JSON object: `{ error: "The post could not be removed" }`.
 
-When the client makes a `PUT` request to `/api/posts/:id`:
+[x] When the client makes a `PUT` request to `/api/posts/:id`:
 
-- If the _post_ with the specified `id` is not found:
+- [x] If the _post_ with the specified `id` is not found:
 
   - return HTTP status code `404` (Not Found).
   - return the following JSON object: `{ message: "The post with the specified ID does not exist." }`.
 
-- If the request body is missing the `title` or `contents` property:
+- [deliberately omitted] If the request body is missing the `title` or `contents` property:
 
   - cancel the request.
   - respond with HTTP status code `400` (Bad Request).
   - return the following JSON response: `{ errorMessage: "Please provide title and contents for the post." }`.
 
-- If there's an error when updating the _post_:
+- [x] If there's an error when updating the _post_:
 
   - cancel the request.
   - respond with HTTP status code `500`.
   - return the following JSON object: `{ error: "The post information could not be modified." }`.
 
-- If the post is found and the new information is valid:
+- [x] If the post is found and the new information is valid:
 
   - update the post document in the database using the new information sent in the `request body`.
   - return HTTP status code `200` (OK).
