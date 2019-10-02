@@ -41,20 +41,6 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
     const id = req.params.id;
     const changes = req.body;
-    // if (!id) {
-    //     res.status(404).json({message: "The post with the specified ID does not exist"})
-    // } else {
-    //     PostData.update(id, changes)
-    //         .then(post => res.status(200).json(changes))
-    //         .catch(err => res.status(500).json({ error: "The post information could not be modified."}))
-    // }
-
-        // if (!id) {
-        // res.status(404).json({message: "The post with the specified ID does not exist"})
-        // } else {
-
-
-        
 
         PostData.update(id, changes)
             .then(post => {
@@ -67,9 +53,6 @@ router.put("/:id", (req, res) => {
             })
             .catch(err => res.status(500).json({ error: "The post information could not be modified."}))
 
-
-
-    
 })
 
 router.delete("/:id", (req, res) => {
