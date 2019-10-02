@@ -10,7 +10,7 @@ const Articles = ({ getPosts, posts }) => {
     }, []);
 
     return (
-        <Article posts={posts}/>
+        posts.map(article => <Article article={article}/>)
     );
 }
 

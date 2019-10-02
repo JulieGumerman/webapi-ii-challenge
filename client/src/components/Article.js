@@ -1,12 +1,13 @@
 import React from "react";
 
-const Article = ({posts}) => {
+const Article = (props) => {
     return (
-        <div key={posts.id}>
-            <p>{posts.title}</p>
-            <p><em>{posts.content}</em></p>
-            <p><em>{posts.updated_at}</em></p>
+        <div key={props.article.id}>
+            <p>{props.article.title}</p>
+            <p><em>{props.article.contents}</em></p>
+            <p><em>{props.article.updated_at}</em></p>
         </div>
+
     );
         
 }
